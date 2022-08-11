@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -25,6 +26,6 @@ export class Vaccine {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => Pet, (pet) => pet.vaccine)
+  @ManyToOne(() => Pet, (pet) => pet.vaccine)
   pet: Pet;
 }

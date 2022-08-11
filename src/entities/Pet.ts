@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -32,7 +33,7 @@ export class Pet {
   size: string;
 
   @Column({ default: null })
-  image?: Blob;
+  img?: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -40,7 +41,7 @@ export class Pet {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => User, (user) => user.pet)
+  @ManyToOne(() => User, (user) => user.pet, {eager:true})
   user: User;
 
   @OneToMany(() => Vaccine, (vaccine) => vaccine.pet)
