@@ -4,6 +4,8 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -16,11 +18,11 @@ export class History {
   @PrimaryGeneratedColumn("uuid")
   historyId?: string;
 
-  @Column({ nullable: false })
-  returning: Date;
+  @Column({default:null})
+  returning?: Date;
 
   @Column({ default: null })
-  package: string;
+  package?: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -28,9 +30,11 @@ export class History {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => Pet, (pet) => pet.history)
+  @ManyToOne(() => Pet, (pet) => pet.history, {eager:true})
+  @JoinColumn()
   pet: Pet;
 
-  @OneToMany(() => User, (user) => user.history)
+  @ManyToOne(() => User, (user) => user.history, {eager: true})
+  @JoinColumn()
   user: User;
 }

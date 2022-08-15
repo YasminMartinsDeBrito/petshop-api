@@ -3,9 +3,9 @@ import {
   PrimaryGeneratedColumn,
   Column,
   JoinColumn,
-  OneToOne,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from "typeorm";
 
 import { User } from "./User";
@@ -39,7 +39,7 @@ export class Address {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToOne(() => User, (user) => user.address, { nullable: true })
+  @ManyToOne(() => User, (user) => user.address, { nullable: true, eager:true })
   @JoinColumn()
   user: User;
 }

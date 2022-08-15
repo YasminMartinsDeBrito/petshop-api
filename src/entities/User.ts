@@ -28,6 +28,9 @@ export class User {
   @Column({ nullable: false })
   lastName: string;
 
+  @Column({ default: null })
+  img?: string;
+
   @Column({ nullable: false, unique: true })
   email: string;
 
@@ -43,7 +46,7 @@ export class User {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToOne(() => Address, (address) => address.user, { lazy: true })
+  @OneToMany(() => Address, (address) => address.user)
   address: Address;
 
   @OneToMany(() => Pet, (pet) => pet.user)

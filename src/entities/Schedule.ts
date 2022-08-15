@@ -4,6 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -15,8 +16,8 @@ export class Schedule {
   @PrimaryGeneratedColumn("uuid")
   scheduleId?: string;
 
-  @Column({ nullable: false })
-  returning: Date;
+  @Column({ default: null })
+  returning?: Date;
 
   @Column({ nullable: false })
   description: string;
@@ -27,6 +28,6 @@ export class Schedule {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => Pet, (pet) => pet.schedule)
+  @ManyToOne(() => Pet, (pet) => pet.schedule, {eager:true})
   pet: Pet;
 }
