@@ -16,8 +16,8 @@ export class Schedule {
   @PrimaryGeneratedColumn("uuid")
   scheduleId?: string;
 
-  @Column({ nullable: false })
-  returning: Date;
+  @Column({ default: null })
+  returning?: Date;
 
   @Column({ nullable: false })
   description: string;

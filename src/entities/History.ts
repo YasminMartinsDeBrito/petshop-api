@@ -18,11 +18,11 @@ export class History {
   @PrimaryGeneratedColumn("uuid")
   historyId?: string;
 
-  @Column({ nullable: false })
-  returning: Date;
+  @Column({default:null})
+  returning?: Date;
 
   @Column({ default: null })
-  package: string;
+  package?: string;
 
   @CreateDateColumn()
   created_at: Date;
