@@ -8,7 +8,16 @@ const getAllAddressSchema = yup.array().of(
         city: yup.string().required(),
         state: yup.string().required(),
         number: yup.number().required(),
-        zipcode: yup.string().required()
+        zipcode: yup.string().required(),
+        user: yup.object().shape({
+            userId: yup.string().uuid().required(),
+            isAdm: yup.boolean().default(false).optional(),
+            firstName: yup.string().required(),
+            lastName: yup.string().required(),
+            img: yup.string().optional().nullable(),
+            email: yup.string().email().required(),
+            
+        })
     })
 ).required()
 

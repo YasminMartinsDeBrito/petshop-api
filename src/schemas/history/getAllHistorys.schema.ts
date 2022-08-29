@@ -14,7 +14,7 @@ const getAllHistorysSchema = yup.array().of(
             sex: yup.string().required(),
             type: yup.string().required(),
             size: yup.string().required(),
-            img: yup.string().default(null).optional(),
+            img: yup.string().optional().nullable(),
         }),
         user: yup.object().shape({
             userId: yup.string().uuid().required(),

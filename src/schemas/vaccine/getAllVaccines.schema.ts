@@ -5,15 +5,15 @@ const getAllVaccinesSchema = yup.array().of(
         vaccineId: yup.string().uuid().required(),
         name: yup.string().required(),
         fabricante: yup.string().default(null).optional(),
-        pet: yup.object().shape({
-             petId: yup.string().uuid().required(),
-             name: yup.string().required(),
-             birthdate: yup.date().required(),
-             sex: yup.string().required(),
-             type: yup.string().required(),
-             size: yup.string().required(),
-             img: yup.string().default(null).optional()
-        })
+        // pet: yup.object().shape({
+        //      petId: yup.string().uuid().required(),
+        //      name: yup.string().required(),
+        //      birthdate: yup.string().required(),
+        //      sex: yup.string().required(),
+        //      type: yup.string().required(),
+        //      size: yup.string().required(),
+        //      img: yup.string().optional().nullable()
+        // })
     })
 ).required()
 

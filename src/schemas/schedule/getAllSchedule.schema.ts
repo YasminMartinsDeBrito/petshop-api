@@ -8,11 +8,11 @@ const getAllScheduleSchema = yup.array().of(
         pet: yup.object().shape({
              petId: yup.string().uuid().required(),
              name: yup.string().required(),
-             birthdate: yup.date().required(),
+             birthdate: yup.string().required(),
              sex: yup.string().required(),
              type: yup.string().required(),
              size: yup.string().required(),
-             img: yup.string().default(null).optional(),
+             img: yup.string().default(null).nullable().optional(),
          })
     })
 ).required()

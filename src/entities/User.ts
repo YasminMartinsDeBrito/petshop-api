@@ -46,7 +46,7 @@ export class User {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => Address, (address) => address.user)
+  @OneToOne(() => Address, (address) => address.user)
   address: Address;
 
   @OneToMany(() => Pet, (pet) => pet.user)
